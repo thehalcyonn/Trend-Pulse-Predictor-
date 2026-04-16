@@ -14,7 +14,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# ── Global CSS ────────────────────────────────────────────────────────────────
+
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Karla:wght@300;400;500;600&display=swap');
@@ -163,7 +163,7 @@ button[kind="primary"]:hover {
 </style>
 """, unsafe_allow_html=True)
 
-# ── Chart theme ───────────────────────────────────────────────────────────────
+
 CHART = dict(
     paper_bgcolor='rgba(0,0,0,0)',
     plot_bgcolor='rgba(0,0,0,0)',
@@ -176,7 +176,7 @@ CHART = dict(
 )
 PAL = ['#e8401c','#2563eb','#16a34a','#d97706','#7c3aed','#0891b2']
 
-# ── Session state: page ───────────────────────────────────────────────────────
+
 if 'page' not in st.session_state:
     st.session_state.page = 'home'
 if 'topics' not in st.session_state:
@@ -189,7 +189,7 @@ if 'data_loaded' not in st.session_state:
 def go_to(page):
     st.session_state.page = page
 
-# ── Data functions ────────────────────────────────────────────────────────────
+
 ALL_TOPICS = ['Artificial Intelligence','ChatGPT','Python','Machine Learning',
               'Data Science','Deep Learning','LLM','Blockchain']
 
@@ -253,7 +253,7 @@ def run_pipeline(topics_tuple):
     scores_df = pd.DataFrame(scores).sort_values('confidence', ascending=False)
     return master, trends_df, reddit_df, scores_df
 
-# ── Topnav ────────────────────────────────────────────────────────────────────
+
 def render_nav():
     page = st.session_state.page
     st.markdown(f"""
@@ -274,9 +274,6 @@ def render_nav():
     </div>
     """, unsafe_allow_html=True)
 
-# ═════════════════════════════════════════════════════════════════════════════
-# PAGE: HOME
-# ═════════════════════════════════════════════════════════════════════════════
 def page_home():
     render_nav()
 
@@ -360,9 +357,7 @@ def page_home():
         """, unsafe_allow_html=True)
     st.markdown("</div></div>", unsafe_allow_html=True)
 
-# ═════════════════════════════════════════════════════════════════════════════
-# PAGE: CONFIGURE
-# ═════════════════════════════════════════════════════════════════════════════
+
 def page_configure():
     render_nav()
     st.markdown("""
@@ -413,9 +408,7 @@ def page_configure():
             go_to('dashboard')
             st.rerun()
 
-# ═════════════════════════════════════════════════════════════════════════════
-# PAGE: DASHBOARD
-# ═════════════════════════════════════════════════════════════════════════════
+
 def page_dashboard():
     render_nav()
 
@@ -494,7 +487,7 @@ def page_dashboard():
 
     section = st.session_state.section
 
-    # ── TRENDS ────────────────────────────────────────────────────────────────
+ 
     if section == 'trends':
         st.markdown("""<div style="font-family:'Playfair Display',serif;font-size:1.4rem;
                         font-weight:700;color:#1a1814;margin-bottom:1rem;">
@@ -532,7 +525,7 @@ def page_dashboard():
             fig3.update_layout(**CHART,title='Score spread per topic',height=280,showlegend=False)
             st.plotly_chart(fig3, use_container_width=True)
 
-    # ── FORECAST ──────────────────────────────────────────────────────────────
+   
     elif section == 'forecast':
         st.markdown("""<div style="font-family:'Playfair Display',serif;font-size:1.4rem;
                         font-weight:700;color:#1a1814;margin-bottom:1rem;">
@@ -573,7 +566,7 @@ def page_dashboard():
         with m3: st.metric("Confidence",      f"{row['confidence']}%")
         with m4: st.metric("Direction",       row['direction'])
 
-    # ── SENTIMENT ─────────────────────────────────────────────────────────────
+    
     elif section == 'sentiment':
         st.markdown("""<div style="font-family:'Playfair Display',serif;font-size:1.4rem;
                         font-weight:700;color:#1a1814;margin-bottom:1rem;">
@@ -609,7 +602,7 @@ def page_dashboard():
         fig7.update_layout(**CHART,title='Daily sentiment heatmap · Reddit posts',height=260)
         st.plotly_chart(fig7, use_container_width=True)
 
-    # ── RANKING ───────────────────────────────────────────────────────────────
+   
     elif section == 'ranking':
         st.markdown(f"""<div style="font-family:'Playfair Display',serif;font-size:1.4rem;
                          font-weight:700;color:#1a1814;margin-bottom:1rem;">
@@ -654,7 +647,7 @@ def page_dashboard():
                            height=360,showlegend=False)
         st.plotly_chart(fig8, use_container_width=True)
 
-    # ── DATA ──────────────────────────────────────────────────────────────────
+  
     elif section == 'data':
         st.markdown("""<div style="font-family:'Playfair Display',serif;font-size:1.4rem;
                         font-weight:700;color:#1a1814;margin-bottom:1rem;">
@@ -692,9 +685,7 @@ def page_dashboard():
             st.rerun()
     st.markdown("</div>", unsafe_allow_html=True)
 
-# ═════════════════════════════════════════════════════════════════════════════
-# PAGE: ABOUT
-# ═════════════════════════════════════════════════════════════════════════════
+
 def page_about():
     render_nav()
     st.markdown("""
@@ -748,9 +739,7 @@ def page_about():
             go_to('home')
             st.rerun()
 
-# ═════════════════════════════════════════════════════════════════════════════
-# ROUTER
-# ═════════════════════════════════════════════════════════════════════════════
+
 page = st.session_state.page
 if   page == 'home':      page_home()
 elif page == 'configure': page_configure()
