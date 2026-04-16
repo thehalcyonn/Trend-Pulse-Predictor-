@@ -274,7 +274,10 @@ def render_nav():
     </div>
     """, unsafe_allow_html=True)
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 91a4877601d7599820740ea42bc6876ef60f11ea
 def page_home():
     render_nav()
 
@@ -488,6 +491,10 @@ def page_dashboard():
 
     section = st.session_state.section
 
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> 91a4877601d7599820740ea42bc6876ef60f11ea
     if section == 'trends':
         st.markdown("""<div style="font-family:'Playfair Display',serif;font-size:1.4rem;
                         font-weight:700;color:#1a1814;margin-bottom:1rem;">
@@ -525,6 +532,10 @@ def page_dashboard():
             fig3.update_layout(**CHART,title='Score spread per topic',height=280,showlegend=False)
             st.plotly_chart(fig3, use_container_width=True)
 
+<<<<<<< HEAD
+=======
+   
+>>>>>>> 91a4877601d7599820740ea42bc6876ef60f11ea
     elif section == 'forecast':
         st.markdown("""<div style="font-family:'Playfair Display',serif;font-size:1.4rem;
                         font-weight:700;color:#1a1814;margin-bottom:1rem;">
@@ -565,6 +576,10 @@ def page_dashboard():
         with m3: st.metric("Confidence",      f"{row['confidence']}%")
         with m4: st.metric("Direction",       row['direction'])
 
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 91a4877601d7599820740ea42bc6876ef60f11ea
     elif section == 'sentiment':
         st.markdown("""<div style="font-family:'Playfair Display',serif;font-size:1.4rem;
                         font-weight:700;color:#1a1814;margin-bottom:1rem;">
@@ -600,6 +615,10 @@ def page_dashboard():
         fig7.update_layout(**CHART,title='Daily sentiment heatmap · Reddit posts',height=260)
         st.plotly_chart(fig7, use_container_width=True)
 
+<<<<<<< HEAD
+=======
+   
+>>>>>>> 91a4877601d7599820740ea42bc6876ef60f11ea
     elif section == 'ranking':
         st.markdown(f"""<div style="font-family:'Playfair Display',serif;font-size:1.4rem;
                          font-weight:700;color:#1a1814;margin-bottom:1rem;">
@@ -644,6 +663,10 @@ def page_dashboard():
                            height=360,showlegend=False)
         st.plotly_chart(fig8, use_container_width=True)
 
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 91a4877601d7599820740ea42bc6876ef60f11ea
     elif section == 'data':
         st.markdown("""<div style="font-family:'Playfair Display',serif;font-size:1.4rem;
                         font-weight:700;color:#1a1814;margin-bottom:1rem;">
